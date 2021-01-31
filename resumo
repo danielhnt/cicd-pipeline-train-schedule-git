@@ -1,0 +1,155 @@
+####################################################################################################
+Introduction to SCM
+
+* Source Control Management (SCM) is an importante component of our CI/CD pipeline.
+    Its is a huge part of the daily dev workflow:
+    All COde changes made by devs will need to be tracked in SCM
+    Devs will use SCM to tracke their changes separately and then merge them together
+* All pieces of automation that need to interact with the source code will use SCM
+    Continuous Integration (CI) will get the code from SCM
+    SCM will notify the CI server when code needs to be built
+
+GIT SCM
+
+We will be using Git, and specifically GitHub, to manage the source code for the Train Schedule app
+
+* Before moving forward, you need a basic understanding of a Git-based workflow
+* You need to know what steps need to be done in order to make a change to the souce code 
+and ensure that change to the source code and ensure that change is managed in Git:
+
+- Cloning = cloning de repository pulling down the souce code form the remote repository
+- Adding = adding new infos
+- Committing = committing is comitt the changes to souce code
+- Pushing = when we need publish my local comittis to remote server
+- Branching =  when we have a group of developers working on particular feature and separate features to make Control
+- Merging = when we need merged into the main line, they will merge the branch with the main or master branch
+- Pull requests = that is implemented bye git hub to allow review prior to emerge. 
+##################################################################################################
+Installing Git
+https://git-scm.com/downloads
+
+git config --global user.name "Daniel Tavares"
+git config --global user.email "your e-mail"
+
+Setting up Private Key Access
+An easy way to authenticate with a remote git server like GitHub is to use an SSH Key Pair.
+On a CentOS environment, you can generate an ssh key pair like this:
+
+ssh-keygen -t -b 4096
+
+This command will prompt you for several things. These can be left as their defaults, though it is good practive to 
+enter a passphrase. If you do use a passphrase, make sure you remember what it is.
+
+Depois de gerar precisamos pegar o chave no diretorio
+ cd .ssh/
+ cat id_rsa.pub
+ Copiar os dados da chave
+ Ir na pagina do GitHub
+ Clicar em seu avatar
+ Ir em settings
+ Ir em SSH and GPG keys
+ Clicar em create new key
+ Copiar a key e salvar
+#####################################################################################################
+Creating GitHub Forks
+
+Bifurcar um repo
+Uma bifurcação é uma cópia de um repositório. Bifurcar um repositório permite que você faça experiências à vontade sem comprometer o projeto original.
+
+Neste artigo
+Bifurque um exemplo de repositório
+Mantenha sua bifurcação sincronizada
+Localize outro repositório para bifurcar
+Comemore
+O uso mais comum das bifurcações são propostas de mudanças no projeto de alguma outra pessoa ou o uso do projeto de outra pessoa como ponto de partida para sua própria ideia.
+
+Proponha mudanças no projeto de outra pessoa
+Por exemplo, você pode usar bifurcações para propor alterações relacionadas à correção de um bug. Em vez de registrar um erro encontrado, é possível:
+
+Bifurcar o repositório.
+Fazer a correção.
+Enviar um pull request ao proprietário do projeto.
+
+Bifurque um exemplo de repositório
+Bifurcar um repositório é um processo fácil, de duas etapas. Criamos um repositório para você usar para treinar.
+
+Em GitHub, navegue até o repositório octocat/Spoon-Knife.
+No canto superior direito da página, clique em Fork (Bifurcação).
+
+#########################################################################################
+Making Changes in Git
+
+Gi Clone
+if you are working with source code that alredy exists in a remote repository, the first thing you need to do is
+get a copy of repository so that you can work with the files locally:
+
+git clone git@github.com/danielhnt/cicd-pipeline-train-schedule-git
+
+This command does two things
+* Downloads a local copy of the repository, including the history of all changes
+* Makes a local copy of the latest version of all the files know as the "working tree"
+
+If the code doesn´t already exist in a remote repository, you can initialize a new repository locally using:
+
+git init =  create new repository
+now we can see the source code file
+
+
+git status
+
+the status command is a very useful command whenever you need to know about the current status of your local repository
+
+git status
+this command will tell you all sorts of useful information, like:
+Whether you have any changes that are not yet staged for commit
+Whether you have staged changes that are not committed
+What branch you currently using
+
+Git add
+
+The add command stages changed files for the next commit. This allows you to control which files are committed and which are
+not:
+
+git add <file>
+
+Before you can commit a change to a file, you need to add the file to the staging area. Use git status to see
+which changed files have and have not been added. To add all files that have been changed use:
+
+git add
+or
+git add -A 
+
+git commit
+Commit adds your changes to your local repository and makes them part of the repositorys change history. When 
+you are satisfied with a change or set of changes that you have made to the files, you are
+ready to commit them:
+
+git commit -m "message describing the change"
+
+A few notes on commit
+* Commit only adds the changes to you local copy of repository. It does not push them to any 
+remote repository, such as GitHub
+* Commit will only commit the changes that were staged using git add
+
+git push
+
+Git push pushes the changes that have been made to your local repository to a remote repository, 
+such as GitHub. Until you push your changes, they are only stored locally on your system:
+
+git push 
+
+By default, push will push changes to a remote repository associated 
+with the current local branch. If you cloned the branch from an existing remote repository, this relationship
+is already set up for you, and you can simply use git push. If not, you may need to specify which remote repository and
+which remote branch you want push to use
+
+git push -u <remote name, usually origin> <branch name>
+
+vim views/index.jade
+
+Edit one line
+save with wq!
+
+git add .
+
+git push
